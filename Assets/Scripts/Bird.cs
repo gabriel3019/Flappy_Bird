@@ -7,11 +7,13 @@ public class Bird : MonoBehaviour
 
     private bool isDead;
     private Rigidbody2D rb2d;
+    private Animator anim;
     public float upForce = 200f;
 
     void Awake()
     {
         rb2d = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
     }
 
 
@@ -29,6 +31,7 @@ public class Bird : MonoBehaviour
             {
                 rb2d.velocity = Vector2.zero;
                 rb2d.AddForce(Vector2.up * upForce);
+                anim.SetTrigger("Flap");
             }
         
     }
@@ -36,5 +39,6 @@ public class Bird : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         isDead = true;
+        anim.SetTrigger("Die");
     }
 }
