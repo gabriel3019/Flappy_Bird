@@ -10,19 +10,16 @@ public class Bird : MonoBehaviour
     private Animator anim;
     public float upForce = 200f;
 
+
+    private RotateBird rotateBird;
+
     void Awake()
     {
         rb2d = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        rotateBird = GetComponent<RotateBird>();
     }
 
-
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
         if(isDead) return;
@@ -32,6 +29,7 @@ public class Bird : MonoBehaviour
                 rb2d.velocity = Vector2.zero;
                 rb2d.AddForce(Vector2.up * upForce);
                 anim.SetTrigger("Flap");
+                SoundSystem.instance.PlayFlap();
             }
         
     }
@@ -40,7 +38,9 @@ public class Bird : MonoBehaviour
     {
         isDead = true;
         anim.SetTrigger("Die");
+        rotateBird.enabled = false;
         GameController.instance.BirdDie();
         rb2d.velocity = Vector2.zero;
+        SoundSystem.instance.PlayHit();
     }
 }
