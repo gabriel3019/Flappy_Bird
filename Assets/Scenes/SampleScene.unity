@@ -139,7 +139,7 @@ GameObject:
   - component: {fileID: 69286064}
   m_Layer: 0
   m_Name: Bird
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -512,6 +512,7 @@ MonoBehaviour:
   gameOverText: {fileID: 1038069462}
   gameOver: 0
   scrollSpeed: -1.5
+  scoreText: {fileID: 1275523964}
 --- !u!4 &424112537
 Transform:
   m_ObjectHideFlags: 0
